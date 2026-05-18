@@ -31,7 +31,16 @@ function Game() {
 			],
 			hero: { x: 5, y: 10 },
 			item: { x: 10, y: 1 },
-			npc: { x: 10, y: 9, dialog: [
+			npcs: [{ x: 10, y: 9, imageId: 'davy', dialog: [
+					'(Davy) Hey',
+					'(Jack) Hey there Im looking for a room',
+					'(Davy) Cash or check?',
+					'(Jack) Cash',
+					'(Davy) good pay in advance and you will get a 10% discount.',
+					'(Davy) here is the key',
+					'(Jack) thanks.'
+				] },
+				{ x: 6, y: 1, color: 'blue', dialog: [
 					'(Tim) Hey Jack, you need money for college, right?',
 					'(Jack) Yeah?',
 					'(Tim) If you want to make some money, you can sell some weed for me.',
@@ -41,34 +50,41 @@ function Game() {
 					'(Tim) Lets do it next week. I will take the money, go inside, get the weed, then we go and sell it for bank.',
 					'(Jack) Sounds great, I will see you next week.'
 				] }
+			]
 		},
 		{
 			map: [
-			[1,1,1,1,1,1,1,1,1,1,1,1],
-			[1,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,1,1,1,0,1,1,1,1,0,1],
-			[1,0,1,0,0,0,0,0,0,1,0,1],
-			[1,0,1,0,1,1,1,1,0,1,0,1],
-			[1,0,0,0,1,0,0,1,0,1,0,1],
-			[1,0,1,0,1,0,0,1,0,1,0,1],
-			[1,0,1,0,0,0,0,0,0,1,0,1],
-			[1,0,1,1,1,1,1,1,0,1,0,1],
-			[1,0,0,0,0,0,0,0,0,1,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,1],
-			[1,1,1,1,1,1,1,1,1,1,1,1]
+			[3,3,3,3,3,3,3,3,3,3,3,3],
+			[3,0,0,0,0,0,0,0,0,0,0,1],
+			[3,0,1,1,1,0,1,1,1,1,0,1],
+			[3,0,1,0,0,0,0,0,0,1,0,1],
+			[3,0,1,0,1,1,1,1,0,1,0,1],
+			[3,0,0,0,1,0,0,1,0,1,0,1],
+			[3,0,1,0,1,0,0,1,0,1,0,1],
+			[3,0,1,0,0,0,0,0,0,1,0,1],
+			[3,0,1,1,1,1,1,1,0,1,0,1],
+			[3,0,0,0,0,0,0,0,0,1,0,1],
+			[3,0,0,0,0,0,0,0,0,0,0,1],
+			[3,1,1,1,1,1,1,1,1,1,1,1]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 10, y: 10 },
-			npc: { x: 8, y: 5, dialog: [
-					'(Tim) Hey Jack, you need money for college, right?',
-					'(Jack) Yeah?',
-					'(Tim) If you want to make some money, you can sell some weed for me.',
-					'(Jack) That would be great, what do you want me to do?',
-					'(Tim) There is this great place, but I need $200 to buy it, then we can sell it for even more afterwards. You will get your $200 back, and more!',
-					'(Jack) Hell yeah dude!',
-					'(Tim) Lets do it next week. I will take the money, go inside, get the weed, then we go and sell it for bank.',
-					'(Jack) Sounds great, I will see you next week.'
-				] }
+npcs: [
+					{ x: 8, y: 5, color: 'red', dialog: [
+						'(Tim) Hey Jack, you need money for college, right?',
+						'(Jack) Yeah?',
+						'(Tim) If you want to make some money, you can sell some weed for me.',
+						'(Jack) That would be great, what do you want me to do?',
+						'(Tim) There is this great place, but I need $200 to buy it, then we can sell it for even more afterwards. You will get your $200 back, and more!',
+						'(Jack) Hell yeah dude!',
+						'(Tim) Lets do it next week. I will take the money, go inside, get the weed, then we go and sell it for bank.',
+						'(Jack) Sounds great, I will see you next week.'
+					] },
+					{ x: 2, y: 2, color: 'green', dialog: [
+						'(Sasha) Hi Jack. The yellow item is the key to move on.',
+						'(Jack) Thanks Sasha, I will go get it.'
+					] }
+				]
 		}
 	];
 	
@@ -80,6 +96,8 @@ function Game() {
 	var spriteLeft = document.getElementById('jackleft');
 	var kingscourt = document.getElementById('kingscourt');
 	var level1 = document.getElementById('level1');
+	var level2 = document.getElementById('level2');
+	var davy = document.getElementById('davy');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
@@ -125,15 +143,21 @@ function Game() {
 		this.x = 0;
 		this.y = 0;
 		this.dialog = '';
+		this.color = 'purple';
+		this.image = null;
 		this.draw = function() {
-			ctx.fillStyle = 'green';
-			ctx.fillRect(this.x*tileWidth + 8, this.y*tileHeight + 8, tileWidth - 16, tileHeight - 16);
+			if (this.image && this.image.complete) {
+				ctx.drawImage(this.image,this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
+			} else {
+				ctx.fillStyle = this.color;
+				ctx.fillRect(this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
+			}
 		};
 	}
 	
 	var hero = new Sprite();
 	var item = new Item();
-	var npc = new NPC();
+	var npcs = [];
 
 	function loadLevel(levelIndex) {
 		currentLevel = levelIndex;
@@ -142,11 +166,19 @@ function Game() {
 		hero.y = levels[currentLevel].hero.y;
 		item.x = levels[currentLevel].item.x;
 		item.y = levels[currentLevel].item.y;
-		npc.x = levels[currentLevel].npc.x;
-		npc.y = levels[currentLevel].npc.y;
-		npc.dialog = levels[currentLevel].npc.dialog;
-		npc.dialogIndex = 0;
-		setDialog('Level ' + (currentLevel + 1) + ': reach the yellow item to continue. Press T near the NPC to talk.');
+		npcs = [];
+		var levelNpcs = levels[currentLevel].npcs || (levels[currentLevel].npc ? [levels[currentLevel].npc] : []);
+		levelNpcs.forEach(function(def) {
+			var npc = new NPC();
+			npc.x = def.x;
+			npc.y = def.y;
+			npc.dialog = def.dialog;
+			npc.dialogIndex = 0;
+			npc.color = def.color || npc.color;
+			npc.image = def.imageId ? document.getElementById(def.imageId) || npc.image : npc.image;
+			npcs.push(npc);
+		});
+		setDialog('Level ' + (currentLevel + 1) + ': reach the yellow item to continue. Press T near an NPC to talk.');
 	}
 
 	function nextLevel() {
@@ -176,6 +208,9 @@ function Game() {
 						case 2:
 							ctx.drawImage(kingscourt,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
+						case 3:
+							ctx.drawImage(level2,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							break;
 						default:
 							ctx.fillStyle = '#BA9A6E';
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
@@ -190,7 +225,7 @@ function Game() {
 		},
 		loop: function() {
 			_.draw();
-			npc.draw();
+			npcs.forEach(function(npc) { npc.draw(); });
 			hero.draw();
 			item.draw();
 			_.animate();
@@ -243,17 +278,22 @@ function Game() {
 					break;
 				case 84:
 					// Talk
-					if (Math.abs(hero.x - npc.x) + Math.abs(hero.y - npc.y) <= 1) {
-						if (Array.isArray(npc.dialog)) {
-							if (npc.dialogIndex < npc.dialog.length) {
-								setDialog(npc.dialog[npc.dialogIndex]);
-								npc.dialogIndex += 1;
+					var nearbyNpc = null;
+					npcs.forEach(function(npc) {
+						if (!nearbyNpc && Math.abs(hero.x - npc.x) + Math.abs(hero.y - npc.y) <= 1) {
+							nearbyNpc = npc;
+						}
+					});
+					if (nearbyNpc) {
+						if (Array.isArray(nearbyNpc.dialog)) {
+							if (nearbyNpc.dialogIndex < nearbyNpc.dialog.length) {
+								setDialog(nearbyNpc.dialog[nearbyNpc.dialogIndex]);
+								nearbyNpc.dialogIndex += 1;
 							} else {
-								// At end of conversation: keep showing the final line
-								setDialog(npc.dialog[npc.dialog.length - 1]);
+								setDialog(nearbyNpc.dialog[nearbyNpc.dialog.length - 1]);
 							}
 						} else {
-							setDialog(npc.dialog);
+							setDialog(nearbyNpc.dialog);
 						}
 					} else {
 						setDialog('No one is close enough to talk to.');
