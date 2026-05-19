@@ -142,20 +142,20 @@ npcs: [ //rik
 			item: { x: 10, y: 10 }
 		},
 		{ //5
-			defaultColor: '#fff12b',
+			defaultColor: '#BA9A6E',
 			map: [
-			[3,3,3,3,3,3,3,3,3,3,3,3],
-			[3,0,3,0,3,0,3,0,3,0,0,3],
-			[3,0,3,0,3,0,3,0,3,0,0,3],
-			[3,0,0,0,0,0,0,0,0,0,0,3],
-			[3,0,3,0,3,0,3,0,3,0,0,3],
-			[3,0,3,0,3,0,3,0,3,0,0,3],
-			[3,0,3,0,0,0,0,0,3,0,0,3],
-			[3,0,3,0,3,3,3,0,3,0,0,3],
-			[3,0,0,0,0,0,0,0,0,0,0,3],
-			[3,0,3,0,3,0,3,0,3,0,0,3],
-			[3,0,0,0,0,0,0,0,0,0,0,3],
-			[3,3,3,3,3,3,3,3,3,3,3,3]
+			[8,7,7,7,7,7,7,7,7,7,7,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,0,0,0,0,0,0,0,0,0,0,8],
+			[8,8,8,8,8,8,8,7,7,8,8,8]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 15, y: 15 }
@@ -177,6 +177,7 @@ npcs: [ //rik
 	var level2 = document.getElementById('level2');
 	var level3 = document.getElementById('level3');
 	var level4 = document.getElementById('level4');
+	var level5 = document.getElementById('level5');
 	var davy = document.getElementById('davy');
 	var rik = document.getElementById('rik');
 	var weed = document.getElementById('weed');
@@ -328,7 +329,10 @@ npcs: [ //rik
 							drawImageSafe(level4, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 7:
-							ctx.fillStyle = '#1f0cd0';
+							drawImageSafe(level5, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
+							break;
+						case 8:
+							ctx.fillStyle = '#fffc3f';
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 						default:
