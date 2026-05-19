@@ -40,7 +40,7 @@ function Game() {
 					'(Davy) here is the key',
 					'(Jack) thanks.'
 				] },
-				{ x: 6, y: 1, color: 'blue', dialog: [
+				{ x: 6, y: 1, imageId: 'tim', dialog: [
 					'(Tim) Hey Jack, you need money for college, right?',
 					'(Jack) Yeah?',
 					'(Tim) If you want to make some money, you can sell some weed for me.',
@@ -166,6 +166,8 @@ npcs: [
 	var davy = document.getElementById('davy');
 	var rik = document.getElementById('rik');
 	var weed = document.getElementById('weed');
+	var hamilton = document.getElementById('hamilton');
+	var tim = document.getElementById('tim');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
@@ -284,6 +286,14 @@ npcs: [
 							ctx.drawImage(level2,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 						case 4:
+							ctx.fillStyle = '#1f0cd0';
+							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							break;
+						case 5:
+							ctx.fillStyle = '#1f0cd0';
+							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							break;
+						case 6:
 							ctx.fillStyle = '#1f0cd0';
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
