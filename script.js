@@ -15,6 +15,7 @@ function Game() {
 	
 	var levels = [
 		{ //1
+			defaultColor: '#BA9A6E',
 			map: [
 			[1,1,1,1,1,1,1,1,1,1,1,1],
 			[1,0,0,1,0,0,0,1,0,0,0,1],
@@ -53,29 +54,38 @@ function Game() {
 			]
 		},
 		{ //2
+			defaultColor: '#BA9A6E',
 			map: [
 			[3,3,3,3,3,3,3,3,3,3,3,3],
 			[3,0,0,0,0,0,0,0,0,0,0,3],
-			[3,0,3,3,3,0,3,3,3,3,0,3],
-			[3,0,3,0,0,0,0,0,0,3,0,3],
-			[3,0,3,0,3,3,3,3,0,3,0,3],
-			[3,0,0,0,3,0,0,3,0,3,0,3],
-			[3,0,3,0,3,0,0,3,0,3,0,3],
-			[3,0,3,0,0,0,0,0,0,3,0,3],
-			[3,0,3,3,3,3,3,3,0,3,0,3],
-			[3,0,0,0,0,0,0,0,0,3,0,3],
+			[3,0,5,5,5,0,5,5,5,5,0,3],
+			[3,0,5,0,0,0,0,0,0,5,0,3],
+			[3,0,5,0,5,5,5,5,0,5,0,3],
+			[3,0,0,0,5,0,0,5,0,5,0,3],
+			[3,0,5,0,5,0,0,5,0,5,0,3],
+			[3,0,5,0,0,0,0,0,0,5,0,3],
+			[3,0,5,5,5,5,5,5,0,5,0,3],
+			[3,0,0,0,0,0,0,0,0,5,0,3],
 			[3,0,0,0,0,0,0,0,0,0,0,3],
 			[3,3,3,3,3,3,3,3,3,3,3,3]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 10, y: 10 },
-npcs: [
-					{ x: 8, y: 5, imageId: 'rik', dialog: [
-						'(Rik) Hello. I need for you guys to make me a crate that has a false bottom to it, since I am shipping art and archeological artifacts. I want to make sure that those make it off the island safely.',
-						'(Jack) Yeah, that sounds great. I will go talk to my dad about it then we will let you know when it is done.',
-						'(Rik) Alright, that will work, thank you.'
-					] },
-					{ x: 1, y: 2, color: 'green', dialog: [
+npcs: [ //rik
+				{ x: 8, y: 5, imageId: 'rik', npcId: 'rik', dialog: [
+					'(Rik) Hello. I need for you guys to make me a crate that has a false bottom to it, since I am shipping art and archeological artifacts. I want to make sure that those make it off the island safely.',
+					'(Jack) Yeah, that sounds great. I will go talk to my dad about it then we will let you know when it is done.',
+					'(Rik) Alright, that will work, thank you.'
+				], riksDialogAfter: [
+					'(Rik) I have a proposal to make to you, Jack. You help us sail this boat to New York, and it will take maybe six weeks, if we leave this week. Would you be willing to help?',
+					'(Jack) For sure, I can definitely do that!',
+					'(Rik) But, there is one more detail that once I tell you, you cannot tell anyone else about it.',
+					'(Jack) Ok? What is it?',
+					'(Rik) The boat will be taking two thousand pounds of hash to New York, buried on a small island called Little Dog Island. While you do that, I will need to fly to New York and work out deals, while you go with Hamilton and sail the boat to Manhattan. After we do all of this, and get the deals I have arranged done, then you will get paid ten thousand dollars. In cash.',
+					'(Jack) Count me in, I will go home and start packing.'
+
+				] }, //dad
+				{ x: 1, y: 10, color: 'green', npcId: 'dad', dialog: [
 						'(Jack) Hey dad, what do you think of that guy?',
 						'(Dad) He is a dope smuggler.',
 						'(Jack) What makes you say that?',
@@ -87,54 +97,52 @@ npcs: [
 				]
 		},
 		{ //3
+			defaultColor: '#951212',
 			map: [
 			[4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4],
-			[4,4,4,4,4,4,4,4,4,4,4,4],
-			[4,4,4,4,0,0,0,0,0,4,4,4],
-			[4,4,4,0,0,0,0,0,0,0,4,4],
-			[4,4,0,0,0,0,0,0,0,0,0,4],
-			[4,4,4,0,0,0,0,0,0,0,4,4],
-			[4,4,4,4,0,0,0,0,0,4,4,4],
-			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,0,0,0,0,0,0,4,4,4],
+			[4,4,0,0,0,0,0,0,0,0,4,4],
+			[4,0,0,0,0,0,0,0,0,0,0,4],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[4,0,0,0,0,0,0,0,0,0,0,4],
+			[4,4,0,0,0,0,0,0,0,0,4,4],
+			[4,4,4,0,0,0,0,0,0,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4]
 			],
-			hero: { x: 5, y: 5 },
-			item: { x: 10, y: 9 },
+			hero: { x: 0, y: 6 },
+			item: { x: 9, y: 4 },
 			npcs: [
-				{ x: 6, y: 8, color: 'orange', dialog: [
-					'(Rik) I have a proposal to make to you, Jack. You help us sail this boat to New York, and it will take maybe six weeks, if we leave this week. Would you be willing to help?',
-					'(Jack) For sure, I can definitely do that!',
-					'(Rik) But, there is one more detail that once I tell you, you cannot tell anyone else about it.',
-					'(Jack) Ok? What is it?',
-					'(Rik) The boat will be taking two thousand pounds of hash to New York, buried on a small island called Little Dog Island. While you do that, I will need to fly to New York and work out deals, while you go with Hamilton and sail the boat to Manhattan. After we do all of this, and get the deals I have arranged done, then you will get paid ten thousand dollars. In cash.',
-					'(Jack) Count me in, I will go home and start packing.',
-					'(Hamilton) Do not tell anyone. No friends. No family. Nobody.'
+				{ x: 3, y: 9, imageId: 'hamilton', dialog: [
+					'(Jack) Hey Hamilton. Have you ever considered what will happen to us if we are caught?',
+					'(Hamilton) Jack, you*re afraid. Afraid of the punishment. You can*t be afraid of what we are doing, because we’re doing nothing wrong.'
 
 				] }
 			]
 		},
 		{ //4
+			defaultColor: '#BA9A6E',
 			map: [
-			[1,1,1,1,1,1,1,1,1,1,1,1],
-			[1,0,0,0,0,0,0,0,0,0,0,1],
-			[1,0,1,1,1,1,1,1,1,1,0,1],
-			[1,0,1,0,0,0,0,0,0,1,0,1],
-			[1,0,1,0,1,1,1,1,0,1,0,1],
-			[1,0,1,0,1,0,0,1,0,1,0,1],
-			[1,0,1,0,1,0,0,1,0,1,0,1],
-			[1,0,1,0,1,1,1,1,0,1,0,1],
-			[1,0,0,0,0,0,0,0,0,1,0,1],
-			[1,1,1,1,1,1,1,1,0,1,0,1],
-			[1,0,0,0,0,0,0,0,0,0,0,1],
-			[1,1,1,1,1,1,1,1,1,1,1,1]
+			[6,6,6,6,6,6,6,6,6,6,6,6],
+			[6,0,0,0,0,0,0,0,0,0,0,6],
+			[6,0,6,6,6,6,6,6,6,6,0,6],
+			[6,0,6,0,0,0,0,0,0,6,0,6],
+			[6,0,6,0,6,6,6,6,0,6,0,6],
+			[6,0,6,0,6,0,0,6,0,6,0,6],
+			[6,0,6,0,6,0,0,6,0,6,0,6],
+			[6,0,6,0,6,6,6,6,0,6,0,6],
+			[6,0,0,0,0,0,0,0,0,6,0,6],
+			[6,6,6,6,6,6,6,6,0,6,0,6],
+			[6,0,0,0,0,0,0,0,0,0,0,6],
+			[6,6,6,6,6,6,6,6,6,6,6,6]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 10, y: 10 }
 		},
 		{ //5
+			defaultColor: '#fff12b',
 			map: [
 			[3,3,3,3,3,3,3,3,3,3,3,3],
 			[3,0,3,0,3,0,3,0,3,0,0,3],
@@ -156,6 +164,10 @@ npcs: [
 	
 	var currentLevel = 0;
 	var field = null;
+	var dadTalkedTo = false;
+	var rikTalkedToComplete = false;
+	var rikNpc = null;
+	var defaultColor = '#BA9A6E';
 	
 	var spriteFront = document.getElementById('jack');
 	var spriteBack = document.getElementById('jackback');
@@ -163,17 +175,29 @@ npcs: [
 	var kingscourt = document.getElementById('kingscourt');
 	var level1 = document.getElementById('level1');
 	var level2 = document.getElementById('level2');
+	var level3 = document.getElementById('level3');
+	var level4 = document.getElementById('level4');
 	var davy = document.getElementById('davy');
 	var rik = document.getElementById('rik');
 	var weed = document.getElementById('weed');
 	var hamilton = document.getElementById('hamilton');
 	var tim = document.getElementById('tim');
+	var crate = document.getElementById('crate');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
 	function setDialog(text) {
 		if (dialogBar) {
 			dialogBar.textContent = text;
+		}
+	}
+
+	function drawImageSafe(image, x, y, width, height) {
+		if (image && image.complete && image.naturalWidth > 0 && image.naturalHeight > 0) {
+			ctx.drawImage(image, x, y, width, height);
+		} else {
+			ctx.fillStyle = defaultColor;
+			ctx.fillRect(x, y, width, height);
 		}
 	}
 	
@@ -236,11 +260,15 @@ npcs: [
 	function loadLevel(levelIndex) {
 		currentLevel = levelIndex;
 		field = levels[currentLevel].map;
+		defaultColor = levels[currentLevel].defaultColor || '#BA9A6E';
 		hero.x = levels[currentLevel].hero.x;
 		hero.y = levels[currentLevel].hero.y;
 		item.x = levels[currentLevel].item.x;
 		item.y = levels[currentLevel].item.y;
 		npcs = [];
+		dadTalkedTo = false;
+		rikTalkedToComplete = false;
+		rikNpc = null;
 		var levelNpcs = levels[currentLevel].npcs || (levels[currentLevel].npc ? [levels[currentLevel].npc] : []);
 		levelNpcs.forEach(function(def) {
 			var npc = new NPC();
@@ -250,6 +278,11 @@ npcs: [
 			npc.dialogIndex = 0;
 			npc.color = def.color || npc.color;
 			npc.image = def.imageId ? document.getElementById(def.imageId) || npc.image : npc.image;
+			npc.npcId = def.npcId;
+			npc.riksDialogAfter = def.riksDialogAfter;
+			if (def.npcId === 'rik') {
+				rikNpc = npc;
+			}
 			npcs.push(npc);
 		});
 		setDialog('Level ' + (currentLevel + 1) + ': Press T near an NPC to talk to them. Then collect the weed to continue to the next level.');
@@ -277,28 +310,29 @@ npcs: [
 				for (var x = 0; x < field[y].length; x++) {
 					switch (field[y][x]) {
 						case 1:
-							ctx.drawImage(level1,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+						drawImageSafe(level1, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 2:
-							ctx.drawImage(kingscourt,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+						drawImageSafe(kingscourt, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 3:
-							ctx.drawImage(level2,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+						drawImageSafe(level2, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 4:
-							ctx.fillStyle = '#1f0cd0';
-							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							drawImageSafe(level3, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 5:
-							ctx.fillStyle = '#1f0cd0';
-							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							drawImageSafe(crate, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 6:
+							drawImageSafe(level4, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
+							break;
+						case 7:
 							ctx.fillStyle = '#1f0cd0';
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 						default:
-							ctx.fillStyle = '#BA9A6E';
+							ctx.fillStyle = defaultColor;
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 					}
@@ -371,10 +405,25 @@ npcs: [
 						}
 					});
 					if (nearbyNpc) {
-						if (Array.isArray(nearbyNpc.dialog)) {
+						// Check if trying to talk to dad before Rik
+						if (nearbyNpc.npcId === 'dad' && !rikTalkedToComplete) {
+							setDialog('(Jack) I should talk to Rik first about what he needs.');
+						} else if (Array.isArray(nearbyNpc.dialog)) {
 							if (nearbyNpc.dialogIndex < nearbyNpc.dialog.length) {
 								setDialog(nearbyNpc.dialog[nearbyNpc.dialogIndex]);
 								nearbyNpc.dialogIndex += 1;
+								// Check if Rik just finished his initial dialog
+								if (nearbyNpc.npcId === 'rik' && nearbyNpc.dialogIndex >= nearbyNpc.dialog.length) {
+									rikTalkedToComplete = true;
+								}
+								// Check if dad just finished his dialog
+								if (nearbyNpc.npcId === 'dad' && nearbyNpc.dialogIndex >= nearbyNpc.dialog.length) {
+									dadTalkedTo = true;
+									if (rikNpc && rikNpc.riksDialogAfter) {
+										rikNpc.dialog = rikNpc.riksDialogAfter;
+										rikNpc.dialogIndex = 0;
+									}
+								}
 							} else {
 								setDialog(nearbyNpc.dialog[nearbyNpc.dialog.length - 1]);
 							}
