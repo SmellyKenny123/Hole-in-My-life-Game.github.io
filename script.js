@@ -126,20 +126,28 @@ npcs: [ //rik
 			defaultColor: '#BA9A6E',
 			map: [
 			[6,6,6,6,6,6,6,6,6,6,6,6],
+			[6,0,6,0,6,0,6,0,6,0,6,6],
 			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,0,6,6,6,6,6,6,6,6,0,6],
-			[6,0,6,0,0,0,0,0,0,6,0,6],
-			[6,0,6,0,6,6,6,6,0,6,0,6],
-			[6,0,6,0,6,0,0,6,0,6,0,6],
-			[6,0,6,0,6,0,0,6,0,6,0,6],
-			[6,0,6,0,6,6,6,6,0,6,0,6],
-			[6,0,0,0,0,0,0,0,0,6,0,6],
-			[6,6,6,6,6,6,6,6,0,6,0,6],
+			[6,0,6,0,6,0,6,0,6,0,6,6],
+			[6,0,0,0,0,0,0,0,0,0,0,6],
+			[6,0,6,0,6,0,6,0,6,0,6,6],
+			[6,0,0,0,0,0,0,0,0,0,0,6],
+			[6,0,6,0,6,0,6,0,6,0,6,6],
+			[6,0,0,0,0,0,0,0,0,0,0,6],
+			[6,0,6,0,6,0,6,0,6,0,6,6],
 			[6,0,0,0,0,0,0,0,0,0,0,6],
 			[6,6,6,6,6,6,6,6,6,6,6,6]
 			],
 			hero: { x: 1, y: 1 },
-			item: { x: 10, y: 10 }
+			item: { x: 10, y: 10 },
+			npcs: [
+				{ x: 1, y: 10, imageId: 'hamilton', dialog: [
+					'(Hamilton) Hey Jack. We have sold almost all of the hash at this point. Since we have, I will make sure to get you your payment soon.',
+					'(Jack) Thank you dude!',
+					'(Hamilton) I have another offer for you. I will give you a better cut of the deal if you agree to do another smuggling run with me. It will take six months, but you will get even more money than this time.',
+					'(Jack) You know Hamilton, I do not know. I will need time to think about it.'
+				] }
+			]
 		},
 		{ //5
 			defaultColor: '#BA9A6E',
@@ -158,7 +166,13 @@ npcs: [ //rik
 			[8,8,8,8,8,8,8,7,7,8,8,8]
 			],
 			hero: { x: 1, y: 1 },
-			item: { x: 15, y: 15 }
+			item: { x: 15, y: 15 },
+			npcs: [
+				{ x: 1, y: 10, imageId: 'mirror', dialog: [
+					'Jack was eventually sent to a different prison, where he took up writing again. In the margins of a book, he found ways to write about his experiences. It acted as another log book where he could improve on his writing skills, and also begin to learn how to write again. Jack also was able to get a job as a X-ray technician, and realize how terrible prison is through seeing what others have to go through. ',
+					'Jack began reading more books, and eventually applied to a college with a writing program. After some time, a letter was sent back and Jack had been accepted. Casey went and talked to the parole board, and Jack’s release date was set for December 18th, 15 months since his incarceration.'
+				] }
+			]
 		}
 	];
 	
@@ -178,6 +192,7 @@ npcs: [ //rik
 	var level3 = document.getElementById('level3');
 	var level4 = document.getElementById('level4');
 	var level5 = document.getElementById('level5');
+	var mirror = document.getElementById('mirror');
 	var davy = document.getElementById('davy');
 	var rik = document.getElementById('rik');
 	var weed = document.getElementById('weed');
@@ -332,7 +347,7 @@ npcs: [ //rik
 							drawImageSafe(level5, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 8:
-							ctx.fillStyle = '#fffc3f';
+							ctx.fillStyle = '#d3d14b';
 							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 						default:
