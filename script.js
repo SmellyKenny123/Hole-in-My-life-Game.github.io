@@ -14,7 +14,7 @@ function Game() {
 	canvas.height = 48*12;
 	
 	var levels = [
-		{
+		{ //1
 			map: [
 			[1,1,1,1,1,1,1,1,1,1,1,1],
 			[1,0,0,1,0,0,0,1,0,0,0,1],
@@ -52,39 +52,105 @@ function Game() {
 				] }
 			]
 		},
-		{
+		{ //2
 			map: [
 			[3,3,3,3,3,3,3,3,3,3,3,3],
-			[3,0,0,0,0,0,0,0,0,0,0,1],
-			[3,0,1,1,1,0,1,1,1,1,0,1],
-			[3,0,1,0,0,0,0,0,0,1,0,1],
-			[3,0,1,0,1,1,1,1,0,1,0,1],
-			[3,0,0,0,1,0,0,1,0,1,0,1],
-			[3,0,1,0,1,0,0,1,0,1,0,1],
-			[3,0,1,0,0,0,0,0,0,1,0,1],
-			[3,0,1,1,1,1,1,1,0,1,0,1],
-			[3,0,0,0,0,0,0,0,0,1,0,1],
-			[3,0,0,0,0,0,0,0,0,0,0,1],
-			[3,1,1,1,1,1,1,1,1,1,1,1]
+			[3,0,0,0,0,0,0,0,0,0,0,3],
+			[3,0,3,3,3,0,3,3,3,3,0,3],
+			[3,0,3,0,0,0,0,0,0,3,0,3],
+			[3,0,3,0,3,3,3,3,0,3,0,3],
+			[3,0,0,0,3,0,0,3,0,3,0,3],
+			[3,0,3,0,3,0,0,3,0,3,0,3],
+			[3,0,3,0,0,0,0,0,0,3,0,3],
+			[3,0,3,3,3,3,3,3,0,3,0,3],
+			[3,0,0,0,0,0,0,0,0,3,0,3],
+			[3,0,0,0,0,0,0,0,0,0,0,3],
+			[3,3,3,3,3,3,3,3,3,3,3,3]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 10, y: 10 },
 npcs: [
-					{ x: 8, y: 5, color: 'red', dialog: [
-						'(Tim) Hey Jack, you need money for college, right?',
-						'(Jack) Yeah?',
-						'(Tim) If you want to make some money, you can sell some weed for me.',
-						'(Jack) That would be great, what do you want me to do?',
-						'(Tim) There is this great place, but I need $200 to buy it, then we can sell it for even more afterwards. You will get your $200 back, and more!',
-						'(Jack) Hell yeah dude!',
-						'(Tim) Lets do it next week. I will take the money, go inside, get the weed, then we go and sell it for bank.',
-						'(Jack) Sounds great, I will see you next week.'
+					{ x: 8, y: 5, imageId: 'rik', dialog: [
+						'(Rik) Hello. I need for you guys to make me a crate that has a false bottom to it, since I am shipping art and archeological artifacts. I want to make sure that those make it off the island safely.',
+						'(Jack) Yeah, that sounds great. I will go talk to my dad about it then we will let you know when it is done.',
+						'(Rik) Alright, that will work, thank you.'
 					] },
-					{ x: 2, y: 2, color: 'green', dialog: [
-						'(Sasha) Hi Jack. The yellow item is the key to move on.',
-						'(Jack) Thanks Sasha, I will go get it.'
+					{ x: 1, y: 2, color: 'green', dialog: [
+						'(Jack) Hey dad, what do you think of that guy?',
+						'(Dad) He is a dope smuggler.',
+						'(Jack) What makes you say that?',
+						'(Dad) Like I used to tell you, I am just able to tell by looking at people. Probably wants to smuggle cash, dope, or gold into the States.',
+						'(Jack) Maybe you are wrong, and he actually has artifacts to ship.',
+						'(Dad) You should know better than that. But, as long as he pays, I am happy to do business with him to get us off of this island.'
+
 					] }
 				]
+		},
+		{ //3
+			map: [
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,0,0,0,0,0,4,4,4],
+			[4,4,4,0,0,0,0,0,0,0,4,4],
+			[4,4,0,0,0,0,0,0,0,0,0,4],
+			[4,4,4,0,0,0,0,0,0,0,4,4],
+			[4,4,4,4,0,0,0,0,0,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4],
+			[4,4,4,4,4,4,4,4,4,4,4,4]
+			],
+			hero: { x: 5, y: 5 },
+			item: { x: 10, y: 9 },
+			npcs: [
+				{ x: 6, y: 8, color: 'orange', dialog: [
+					'(Rik) I have a proposal to make to you, Jack. You help us sail this boat to New York, and it will take maybe six weeks, if we leave this week. Would you be willing to help?',
+					'(Jack) For sure, I can definitely do that!',
+					'(Rik) But, there is one more detail that once I tell you, you cannot tell anyone else about it.',
+					'(Jack) Ok? What is it?',
+					'(Rik) The boat will be taking two thousand pounds of hash to New York, buried on a small island called Little Dog Island. While you do that, I will need to fly to New York and work out deals, while you go with Hamilton and sail the boat to Manhattan. After we do all of this, and get the deals I have arranged done, then you will get paid ten thousand dollars. In cash.',
+					'(Jack) Count me in, I will go home and start packing.',
+					'(Hamilton) Do not tell anyone. No friends. No family. Nobody.'
+
+				] }
+			]
+		},
+		{ //4
+			map: [
+			[1,1,1,1,1,1,1,1,1,1,1,1],
+			[1,0,0,0,0,0,0,0,0,0,0,1],
+			[1,0,1,1,1,1,1,1,1,1,0,1],
+			[1,0,1,0,0,0,0,0,0,1,0,1],
+			[1,0,1,0,1,1,1,1,0,1,0,1],
+			[1,0,1,0,1,0,0,1,0,1,0,1],
+			[1,0,1,0,1,0,0,1,0,1,0,1],
+			[1,0,1,0,1,1,1,1,0,1,0,1],
+			[1,0,0,0,0,0,0,0,0,1,0,1],
+			[1,1,1,1,1,1,1,1,0,1,0,1],
+			[1,0,0,0,0,0,0,0,0,0,0,1],
+			[1,1,1,1,1,1,1,1,1,1,1,1]
+			],
+			hero: { x: 1, y: 1 },
+			item: { x: 10, y: 10 }
+		},
+		{ //5
+			map: [
+			[3,3,3,3,3,3,3,3,3,3,3,3],
+			[3,0,3,0,3,0,3,0,3,0,0,3],
+			[3,0,3,0,3,0,3,0,3,0,0,3],
+			[3,0,0,0,0,0,0,0,0,0,0,3],
+			[3,0,3,0,3,0,3,0,3,0,0,3],
+			[3,0,3,0,3,0,3,0,3,0,0,3],
+			[3,0,3,0,0,0,0,0,3,0,0,3],
+			[3,0,3,0,3,3,3,0,3,0,0,3],
+			[3,0,0,0,0,0,0,0,0,0,0,3],
+			[3,0,3,0,3,0,3,0,3,0,0,3],
+			[3,0,0,0,0,0,0,0,0,0,0,3],
+			[3,3,3,3,3,3,3,3,3,3,3,3]
+			],
+			hero: { x: 1, y: 1 },
+			item: { x: 15, y: 15 }
 		}
 	];
 	
@@ -98,6 +164,8 @@ npcs: [
 	var level1 = document.getElementById('level1');
 	var level2 = document.getElementById('level2');
 	var davy = document.getElementById('davy');
+	var rik = document.getElementById('rik');
+	var weed = document.getElementById('weed');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
@@ -125,8 +193,12 @@ npcs: [
 		this.y = 1;
 		
 		this.draw = function() {
-			ctx.fillStyle = 'yellow';
-			ctx.fillRect(this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
+			if (weed && weed.complete && weed.naturalWidth > 0 && weed.naturalHeight > 0) {
+				ctx.drawImage(weed,this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
+			} else {
+				ctx.fillStyle = 'yellow';
+				ctx.fillRect(this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
+			}
 		};
 		
 		this.pickUp = function() {
@@ -146,7 +218,7 @@ npcs: [
 		this.color = 'purple';
 		this.image = null;
 		this.draw = function() {
-			if (this.image && this.image.complete) {
+			if (this.image && this.image.complete && this.image.naturalWidth > 0 && this.image.naturalHeight > 0) {
 				ctx.drawImage(this.image,this.x*tileWidth,this.y*tileHeight,tileWidth,tileHeight);
 			} else {
 				ctx.fillStyle = this.color;
@@ -178,7 +250,7 @@ npcs: [
 			npc.image = def.imageId ? document.getElementById(def.imageId) || npc.image : npc.image;
 			npcs.push(npc);
 		});
-		setDialog('Level ' + (currentLevel + 1) + ': reach the yellow item to continue. Press T near an NPC to talk.');
+		setDialog('Level ' + (currentLevel + 1) + ': Press T near an NPC to talk to them. Then collect the weed to continue to the next level.');
 	}
 
 	function nextLevel() {
@@ -210,6 +282,10 @@ npcs: [
 							break;
 						case 3:
 							ctx.drawImage(level2,x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							break;
+						case 4:
+							ctx.fillStyle = '#1f0cd0';
+							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
 							break;
 						default:
 							ctx.fillStyle = '#BA9A6E';
