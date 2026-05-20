@@ -100,6 +100,7 @@ npcs: [ //rik
 		},
 		{ //3
 			defaultColor: '#951212',
+			defaultImageId: 'boat',
 			intro: 'Level 3: While on the sailboat, they make their way towards Little Dog Island. During the trip, Hamilton stays very cold towards Jack. He reveals that he used to be in the British Navy, and Jack assumes that the flare gun scar Rik had, came from Hamilton.',
 			map: [
 			[4,4,4,4,4,4,4,4,4,4,4,4],
@@ -128,7 +129,7 @@ npcs: [ //rik
 		},
 		{ //4
 			defaultColor: '#BA9A6E',
-			intro: 'Level 4: New York is waiting. Find Hamilton and get ready for the next chapter.',
+			intro: 'Level 4: After landing in New York City Jack and Hamilton made their way to the hotel that Rik was staying at. They would weigh out the hash, then go out and sell it to their customers. Hamilton beleives that they are being followed',
 			map: [
 			[6,6,6,6,6,6,6,6,6,6,6,6],
 			[6,0,6,0,6,0,6,0,6,0,6,6],
@@ -156,7 +157,7 @@ npcs: [ //rik
 		},
 		{ //5
 			defaultColor: '#BA9A6E',
-			intro: 'Level 5: Final chapter. Discover your fate and collect the final item to finish the game.',
+			intro: 'Level 5: They sold most of the hash, and Jack got the ten thousand that he was promised at the beginning. But then, while Hamilton was in the lobby, the FBI went through the fronts doors and told Hamilton to put his hands up. He distracted them by telling them the real culprits were behind them, but they were actually Treasury Agents who were after them for giving counterfeit money to a moroccan group. Hamilton temporarily escaped from them, and Jack went back to the room and climbed down a fire escape, then left the city. He took trains all of the way back to Fort Lauderdale, and King’s Court. Eventually, his dad called and asked him to turn himself in, and he got Jack an attorney by the name of Al E. Newman. Jack returned to New York, buried hash in central park, then turned himself in. They ended up losing in court because there was a lot of evidence against them that was captured by the coast guards and others',
 			map: [
 			[8,7,7,7,7,7,7,7,7,7,7,8],
 			[8,0,0,0,0,0,0,0,0,0,0,8],
@@ -188,6 +189,7 @@ npcs: [ //rik
 	var rikTalkedToComplete = false;
 	var rikNpc = null;
 	var defaultColor = '#BA9A6E';
+	var defaultImage = null;
 	
 	var spriteFront = document.getElementById('jack');
 	var spriteBack = document.getElementById('jackback');
@@ -205,6 +207,8 @@ npcs: [ //rik
 	var hamilton = document.getElementById('hamilton');
 	var tim = document.getElementById('tim');
 	var crate = document.getElementById('crate');
+	var brick = document.getElementById('brick');
+	var boat = document.getElementById('boat');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
@@ -283,6 +287,7 @@ npcs: [ //rik
 		currentLevel = levelIndex;
 		field = levels[currentLevel].map;
 		defaultColor = levels[currentLevel].defaultColor || '#BA9A6E';
+		defaultImage = levels[currentLevel].defaultImageId ? document.getElementById(levels[currentLevel].defaultImageId) : null;
 		hero.x = levels[currentLevel].hero.x;
 		hero.y = levels[currentLevel].hero.y;
 		item.x = levels[currentLevel].item.x;
@@ -353,13 +358,16 @@ npcs: [ //rik
 							drawImageSafe(level5, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						case 8:
-							ctx.fillStyle = '#d3d14b';
-							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+							drawImageSafe(brick, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
 							break;
 						default:
-							ctx.fillStyle = defaultColor;
-							ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
-							break;
+                            if (defaultImage) {
+                                drawImageSafe(defaultImage, x*tileWidth, y*tileHeight, tileWidth, tileHeight);
+                            } else {
+                                ctx.fillStyle = defaultColor;
+                                ctx.fillRect(x*tileWidth,y*tileHeight,tileWidth,tileHeight);
+                            }
+                            break;
 					}
 				}
 			}
