@@ -16,6 +16,7 @@ function Game() {
 	var levels = [
 		{ //1
 			defaultColor: '#BA9A6E',
+			intro: 'Level 1: Jack was in Puerto Rico to help his families business in construction. But, Jack decided that he wanted to finish high school, so he returned to Fort Lauderdale and was set up to live with the Bacon family. While there, he partied and drank, and threw-up in their home often. Finally, they had enough, and kicked Jack out of their home. At this point, Jack got a job in a grocery store, and was living in his car. Jack had a revelation that, “I had lost control. Temporarily. But I*d get it back, I figured. I always did. My family had highs and lows, made money and lost what money can buy, had good days and days that were ground out like cigarette butts. So I was used to hitting the bottom. Now I was waiting for the bounce"(Jack Gantos). Jack then made his way to King*s Court to get a room.',
 			map: [
 			[1,1,1,1,1,1,1,1,1,1,1,1],
 			[1,0,0,1,0,0,0,1,0,0,0,1],
@@ -55,6 +56,7 @@ function Game() {
 		},
 		{ //2
 			defaultColor: '#BA9A6E',
+			intro: 'Level 2: St. Croix had a drug culture. They were constantly available, smell it in the air, everywhere. It was so incorporated, that the police did not care either. This lead to the island being a depot for smugglers. The island is also currently going through a revolution, where the black people believe that the white people own the island and work them like wage slaves, so they are trying to reclaim their land. To do this, they have been breaking into people*s homes, stealing items, and even killing them. Jack*s parents had a construction business, but they had to stop once the revolution started. Now they are constructing crates to help ship wealthy peoples belongings off the island to the states. They hope they can get off the island soon.',
 			map: [
 			[3,3,3,3,3,3,3,3,3,3,3,3],
 			[3,0,0,0,0,0,0,0,0,0,0,3],
@@ -98,6 +100,7 @@ npcs: [ //rik
 		},
 		{ //3
 			defaultColor: '#951212',
+			intro: 'Level 3: While on the sailboat, they make their way towards Little Dog Island. During the trip, Hamilton stays very cold towards Jack. He reveals that he used to be in the British Navy, and Jack assumes that the flare gun scar Rik had, came from Hamilton.',
 			map: [
 			[4,4,4,4,4,4,4,4,4,4,4,4],
 			[4,4,4,4,4,4,4,4,4,4,4,4],
@@ -116,14 +119,16 @@ npcs: [ //rik
 			item: { x: 9, y: 4 },
 			npcs: [
 				{ x: 3, y: 9, imageId: 'hamilton', dialog: [
-					'(Jack) Hey Hamilton. Have you ever considered what will happen to us if we are caught?',
-					'(Hamilton) Jack, you*re afraid. Afraid of the punishment. You can*t be afraid of what we are doing, because we’re doing nothing wrong.'
-
+					'(Hamilton) Hey Jack. We have sold almost all of the hash at this point. Since we have, I will make sure to get you your payment soon. ',
+					'(Jack) Thank you dude! ',
+					'(Hamilton) I have another offer for you. I will give you a better cut of the deal if you agree to do another smuggling run with me. It will take six months, but you will get even more money than this time.',
+					'(Jack) You know Hamilton, I do not know. I will need time to think about it.'
 				] }
 			]
 		},
 		{ //4
 			defaultColor: '#BA9A6E',
+			intro: 'Level 4: New York is waiting. Find Hamilton and get ready for the next chapter.',
 			map: [
 			[6,6,6,6,6,6,6,6,6,6,6,6],
 			[6,0,6,0,6,0,6,0,6,0,6,6],
@@ -151,6 +156,7 @@ npcs: [ //rik
 		},
 		{ //5
 			defaultColor: '#BA9A6E',
+			intro: 'Level 5: Final chapter. Discover your fate and collect the final item to finish the game.',
 			map: [
 			[8,7,7,7,7,7,7,7,7,7,7,8],
 			[8,0,0,0,0,0,0,0,0,0,0,8],
@@ -168,7 +174,7 @@ npcs: [ //rik
 			hero: { x: 1, y: 1 },
 			item: { x: 15, y: 15 },
 			npcs: [
-				{ x: 1, y: 10, imageId: 'mirror', dialog: [
+				{ x: 0, y: 10, imageId: 'mirror', dialog: [
 					'Jack was eventually sent to a different prison, where he took up writing again. In the margins of a book, he found ways to write about his experiences. It acted as another log book where he could improve on his writing skills, and also begin to learn how to write again. Jack also was able to get a job as a X-ray technician, and realize how terrible prison is through seeing what others have to go through. ',
 					'Jack began reading more books, and eventually applied to a college with a writing program. After some time, a letter was sent back and Jack had been accepted. Casey went and talked to the parole board, and Jack’s release date was set for December 18th, 15 months since his incarceration.'
 				] }
@@ -301,7 +307,7 @@ npcs: [ //rik
 			}
 			npcs.push(npc);
 		});
-		setDialog('Level ' + (currentLevel + 1) + ': Press T near an NPC to talk to them. Then collect the weed to continue to the next level.');
+		setDialog(levels[currentLevel].intro || 'Level ' + (currentLevel + 1) + ': Press T near an NPC to talk to them. Then collect the weed to continue to the next level.');
 	}
 
 	function nextLevel() {
