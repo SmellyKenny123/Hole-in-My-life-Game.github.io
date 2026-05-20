@@ -130,7 +130,8 @@ npcs: [ //rik
 			]
 		},
 		{ //4
-			defaultColor: '#BA9A6E',
+			defaultColor: '#6b6b6b',
+			//defaultImageId: 'road',
 			intro: 'Level 4: After landing in New York City Jack and Hamilton made their way to the hotel that Rik was staying at. They would weigh out the hash, then go out and sell it to their customers. Hamilton beleives that they are being followed',
 			map: [
 			[0,0,0,0,0,0,0,0,0,0,0,0],
@@ -212,6 +213,7 @@ npcs: [ //rik
 	var crate = document.getElementById('crate');
 	var brick = document.getElementById('brick');
 	var boat = document.getElementById('boat');
+	var road = document.getElementById('road');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
