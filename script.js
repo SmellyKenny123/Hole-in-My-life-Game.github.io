@@ -87,7 +87,7 @@ npcs: [ //rik
 					'(Jack) Count me in, I will go home and start packing.'
 
 				] }, //dad
-				{ x: 1, y: 10, color: 'green', npcId: 'dad', dialog: [
+				{ x: 1, y: 10, /*color: 'green',*/ imageId: 'dad', npcId: 'dad', dialog: [
 						'(Jack) Hey dad, what do you think of that guy?',
 						'(Dad) He is a dope smuggler.',
 						'(Jack) What makes you say that?',
@@ -120,10 +120,12 @@ npcs: [ //rik
 			item: { x: 9, y: 4 },
 			npcs: [
 				{ x: 3, y: 9, imageId: 'hamilton', dialog: [
-					'(Hamilton) Hey Jack. We have sold almost all of the hash at this point. Since we have, I will make sure to get you your payment soon. ',
-					'(Jack) Thank you dude! ',
-					'(Hamilton) I have another offer for you. I will give you a better cut of the deal if you agree to do another smuggling run with me. It will take six months, but you will get even more money than this time.',
-					'(Jack) You know Hamilton, I do not know. I will need time to think about it.'
+					'Jack takes a picture of Hamilton with the sun behind him. Hamilton takes the camera, removes the film, and tosses it into the ocean.',
+					'(Hamilton) If I find any more film on board it will join that roll.',
+					'(Jack) It is just a photo.',
+					'(Hamilton) It is evidence! Let me see your wallet while we are at it.',
+					'Hamilton takes Jack*s wallet, and tosses out all of his identification aside from his fake ID. '
+
 				] }
 			]
 		},
@@ -131,18 +133,18 @@ npcs: [ //rik
 			defaultColor: '#BA9A6E',
 			intro: 'Level 4: After landing in New York City Jack and Hamilton made their way to the hotel that Rik was staying at. They would weigh out the hash, then go out and sell it to their customers. Hamilton beleives that they are being followed',
 			map: [
-			[6,6,6,6,6,6,6,6,6,6,6,6],
-			[6,0,6,0,6,0,6,0,6,0,6,6],
-			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,0,6,0,6,0,6,0,6,0,6,6],
-			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,0,6,0,6,0,6,0,6,0,6,6],
-			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,0,6,0,6,0,6,0,6,0,6,6],
-			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,0,6,0,6,0,6,0,6,0,6,6],
-			[6,0,0,0,0,0,0,0,0,0,0,6],
-			[6,6,6,6,6,6,6,6,6,6,6,6]
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[6,0,6,0,6,0,6,0,6,0,6,0]
 			],
 			hero: { x: 1, y: 1 },
 			item: { x: 10, y: 10 },
@@ -203,6 +205,7 @@ npcs: [ //rik
 	var mirror = document.getElementById('mirror');
 	var davy = document.getElementById('davy');
 	var rik = document.getElementById('rik');
+	var dad = document.getElementById('dad');
 	var weed = document.getElementById('weed');
 	var hamilton = document.getElementById('hamilton');
 	var tim = document.getElementById('tim');
