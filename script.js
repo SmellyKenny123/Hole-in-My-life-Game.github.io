@@ -180,7 +180,16 @@ npcs: [ //rik
 			npcs: [
 				{ x: 0, y: 10, imageId: 'mirror', dialog: [
 					'Jack was eventually sent to a different prison, where he took up writing again. In the margins of a book, he found ways to write about his experiences. It acted as another log book where he could improve on his writing skills, and also begin to learn how to write again. Jack also was able to get a job as a X-ray technician, and realize how terrible prison is through seeing what others have to go through. ',
-					'Jack began reading more books, and eventually applied to a college with a writing program. After some time, a letter was sent back and Jack had been accepted. Casey went and talked to the parole board, and Jack’s release date was set for December 18th, 15 months since his incarceration.'
+					'Jack began reading more books, and eventually applied to a college with a writing program. After some time, a letter was sent back and Jack had been accepted. Casey went and talked to the parole board, and Jack*s release date was set for December 18th, 15 months since his incarceration.',
+					'After being released, he will rent a room with his dads friend, and pay her rent. Then, he is going to get a job selling Christmas trees, then another one after the holidays',
+					'In his new job, he began to live a normal life. People were nice to him, and he was having a great time socializing and interacting with more people. He has realized how far he has come since his section of bad decisions. In college, he wrote brutal stories of prison, street life, and people he met with hard lives and hard hearts. Then he began to write about his childhood, they became much more important to him since they contained his old days of innocence and happiness. Eventually he started creating children*s books.',
+					'Gantos states, “What remains of the rotted hash is hidden in the hole I dug for it. And I*m out in the open doing what I have always wanted to do. Write” (200).'
+				] },
+				{ x: 10, y: 1, imageId: 'casey', dialog: [
+					'(Jack) Hey, I have a plan to get out of prison early.',
+					'(Casey) Alright, tell me what it is.',
+					'(Jack) If I apply to a college, and get accepted, do you think you could convince the parole board to give me an early release to go to school?',
+					'(Casey) Sure. If you do get accepted, I will write a Special Progress Report and we will give it a shot.'
 				] }
 			]
 		}
@@ -214,6 +223,7 @@ npcs: [ //rik
 	var brick = document.getElementById('brick');
 	var boat = document.getElementById('boat');
 	var road = document.getElementById('road');
+	var casey = document.getElementById('casey');
 	var sprite = spriteFront;
 	var dialogBar = document.getElementById('dialogBar');
 
